@@ -4,7 +4,7 @@ const container = document.getElementById(`container`)
 const box = document.createElement(`div`)
 const scoreDisplay = document.querySelector(`#score`)
 
-let score = 1
+let score = 0
 scoreDisplay.textContent = score
 
 

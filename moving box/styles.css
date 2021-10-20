@@ -3,7 +3,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 1000px;
+    height: 800px;
     }
 
 #container {
@@ -20,4 +20,10 @@ body {
 
 .box:hover {
     cursor: pointer;
+}
+
+#score {
+    margin-bottom: 20px;
+    font-size: 40px;
+    font-weight: bold;
 }
