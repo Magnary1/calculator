@@ -1,0 +1,23 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 1000px;
+    }
+
+#container {
+    width: 800px;
+    height: 500px;
+    border: 0px solid black;
+}
+
+.box {
+    height: 50px;
+    width: 50px;
+    border: 1px solid white;
+}
+
+.box:hover {
+    cursor: pointer;
+}
