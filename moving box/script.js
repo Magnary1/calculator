@@ -11,8 +11,8 @@ scoreDisplay.textContent = score
 container.addEventListener(`mousedown`, resetScore)
 
 function resetScore(e) {
-    if (e.offsetX != 0)
-    if (this.id === `container`) {
+    // console.log(e)
+    if (e.target.className != `box`) {
     score = 0
     scoreDisplay.textContent = score
     }
@@ -21,7 +21,7 @@ function resetScore(e) {
 
 
 function deleteAddNew(e) {
-    console.log(e)
+    // console.log(e)
     score++
     scoreDisplay.textContent = score
 
