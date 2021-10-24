@@ -25,6 +25,8 @@ minusBtn.addEventListener(`click`, minusPressed)
 multiplyBtn.addEventListener(`click`, multiplyPressed)
 divideBtn.addEventListener(`click`, dividePressed)
 
+//setting global variables and initial state of calculator
+
 let a = undefined
 let temp = ``
 
@@ -42,8 +44,9 @@ let multiplyCounter = 0
 let divideON = false
 let divideCounter = 0
 
+let clearCounter = 0
 
-
+//functions
 
 function displayAnswer() {
 
@@ -87,7 +90,6 @@ function displayAnswer() {
             multiplyCounter = 0
         }
     }
-
     if (divideON === true) {
         if (a === temp) {
             output.textContent = +output.textContent / a
@@ -104,8 +106,10 @@ function displayAnswer() {
     }
 }
 
-
 function plusPressed() {
+    if (minusON === true || divideON === true || multiplyON === true) 
+    displayAnswer()
+
     minusON = false
     minusCounter = 0
     multiplyON = false
@@ -116,7 +120,6 @@ function plusPressed() {
 
     if (plusCounter === 0) {
         if (plusON === true) {
-            // if (temp != a) 
             displayAnswer()
             a = +output.textContent
             plusCounter++
@@ -131,6 +134,9 @@ function plusPressed() {
 }
 
 function minusPressed() {
+    if (plusON === true || divideON === true || multiplyON === true) 
+    displayAnswer()
+
     plusON = false
     plusCounter = 0
     multiplyON = false
@@ -140,7 +146,6 @@ function minusPressed() {
 
     if (minusCounter === 0) {
         if (minusON === true) {
-            // if (temp != a) 
             displayAnswer()
             a = +output.textContent
             minusCounter++
@@ -154,6 +159,8 @@ function minusPressed() {
 }
 
 function multiplyPressed() {
+    if (plusON === true || divideON === true || minusON === true) 
+        displayAnswer()
     minusON = false
     minusCounter = 0
     plusON = false
@@ -163,7 +170,6 @@ function multiplyPressed() {
 
     if (multiplyCounter === 0) {
         if (multiplyON === true) {
-            // if (temp != a) 
             displayAnswer()
             a = +output.textContent
             multiplyCounter++
@@ -177,7 +183,9 @@ function multiplyPressed() {
     }
 }
 
-function dividePressed(e) {
+function dividePressed() {
+    if (plusON === true || multiplyON === true || minusON === true) 
+        displayAnswer()
     plusON = false
     plusCounter = 0
     multiplyON = false
@@ -185,11 +193,8 @@ function dividePressed(e) {
     minusON = false
     minusCounter = 0
 
-
-    console.log(e)
     if (divideCounter === 0) {
         if (divideON === true) {
-            // if (temp != a) 
             displayAnswer()
             a = +output.textContent
             divideCounter++
@@ -201,7 +206,6 @@ function dividePressed(e) {
         }
     }
 }
-
 
 function displayNumber(e) {
     if (newNumON === true) {
@@ -215,12 +219,9 @@ function displayNumber(e) {
         divideCounter = 0
     }
     clearBtn.textContent = `C`
-
+    if (output.textContent.includes(`.`))
     output.textContent += e.target.textContent
 }
-
-
-let clearCounter = 0
 
 function clearDisplay() {
     output.textContent = ""
