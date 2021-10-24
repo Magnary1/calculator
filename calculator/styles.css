@@ -4,19 +4,26 @@ body {
     align-items: center;
 }
 
+header {
+    font: bold;
+    font-size: 42px;
+    margin: 24px;
+}
 #calculator {
-    width: 300px;
-    border: 2px solid black;
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
+    background-color: lightskyblue;
+    padding: 18px;
+    border-radius: 2%;
 }
 
 output {
     width: 250px;
     height: 50px;
-    border: 2px solid black;
-
-    
+    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.1);
+    background-color: lightblue;
+    border-radius: 2%;
 }
 .row {
     display: flex;
@@ -31,4 +38,8 @@ button {
     width: 60px;
     height: 50px;
     gap: 2px;
+}
+
+#zero-btn {
+    width: 124px;
 }

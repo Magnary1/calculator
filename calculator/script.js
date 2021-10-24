@@ -1,8 +1,13 @@
 // linking to html
 
 const output = document.querySelector(`output`);
-const numbersBtns = document.querySelectorAll(`.numbers`)
 const equalsBtn = document.querySelector(`#equals-btn`)
+const clearBtn = document.querySelector(`#clear-btn`)
+const posNegBtn = document.querySelector(`#pos-neg-btn`)
+const percentBtn = document.querySelector(`#percent-btn`)
+
+const numbersBtns = document.querySelectorAll(`.numbers`)
+
 const addBtn = document.querySelector(`#add-btn`)
 const minusBtn = document.querySelector(`#minus-btn`)
 const multiplyBtn = document.querySelector(`#multiply-btn`)
@@ -12,6 +17,9 @@ const divideBtn = document.querySelector(`#divide-btn`)
 
 numbersBtns.forEach(number => number.addEventListener(`click`, displayNumber))
 equalsBtn.addEventListener(`click`, displayAnswer)
+clearBtn.addEventListener(`click`, clearDisplay)
+posNegBtn.addEventListener(`click`, posNegPressed)
+percentBtn.addEventListener(`click`, percentPressed)
 addBtn.addEventListener(`click`, plusPressed)
 minusBtn.addEventListener(`click`, minusPressed)
 multiplyBtn.addEventListener(`click`, multiplyPressed)
@@ -197,11 +205,50 @@ function dividePressed(e) {
 
 function displayNumber(e) {
     if (newNumON === true) {
+    clearBtn.textContent = `C`
+
         output.textContent = ``
         newNumON = false
     }
+    clearBtn.textContent = `C`
+
     output.textContent += e.target.textContent
 }
 
 
+let clearCounter = 0
 
+function clearDisplay() {
+    output.textContent = ""
+    clearBtn.textContent = `AC`
+    if (clearCounter > 0) {
+        a = undefined
+        temp = ``
+
+        newNumON = false
+
+        plusON = false
+        plusCounter = 0
+
+        minusON = false
+        minusCounter = 0
+
+        multiplyON = false
+        multiplyCounter = 0
+
+        divideON = false
+        divideCounter = 0
+
+        clearCounter = 0
+
+    }
+    clearCounter++
+}
+
+function posNegPressed() {
+    output.textContent = -output.textContent
+}
+
+function percentPressed() {
+    output.textContent = output.textContent / 100
+}
