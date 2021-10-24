@@ -5,6 +5,8 @@ const numbersBtns = document.querySelectorAll(`.numbers`)
 const equalsBtn = document.querySelector(`#equals-btn`)
 const addBtn = document.querySelector(`#add-btn`)
 const minusBtn = document.querySelector(`#minus-btn`)
+const multiplyBtn = document.querySelector(`#multiply-btn`)
+const divideBtn = document.querySelector(`#divide-btn`)
 
 // onclick event listeners
 
@@ -12,6 +14,8 @@ numbersBtns.forEach(number => number.addEventListener(`click`, displayNumber))
 equalsBtn.addEventListener(`click`, displayAnswer)
 addBtn.addEventListener(`click`, plusPressed)
 minusBtn.addEventListener(`click`, minusPressed)
+multiplyBtn.addEventListener(`click`, multiplyPressed)
+divideBtn.addEventListener(`click`, dividePressed)
 
 let a = undefined
 let temp = ``
@@ -24,7 +28,11 @@ let plusCounter = 0
 let minusON = false
 let minusCounter = 0
 
+let multiplyON = false
+let multiplyCounter = 0
 
+let divideON = false
+let divideCounter = 0
 
 
 
@@ -44,8 +52,6 @@ function displayAnswer() {
             plusCounter = 0
         }
     }
-
-
     if (minusON === true) {
         if (a === temp) {
             output.textContent = +output.textContent - a
@@ -60,11 +66,45 @@ function displayAnswer() {
             minusCounter = 0
         }
     }
+    if (multiplyON === true) {
+        if (a === temp) {
+            output.textContent = +output.textContent * a
+            newNumON = true
+            multiplyCounter = 0
+        } else if (a != temp) {
+            temp = +output.textContent
+            output.textContent = +output.textContent * a
+            a = temp
+            newNumON = true
+            multiplyCounter = 0
+        }
+    }
+
+    if (divideON === true) {
+        if (a === temp) {
+            output.textContent = +output.textContent / a
+            newNumON = true
+            divideCounter = 0
+
+        } else if (a != temp) {
+            temp = +output.textContent
+            output.textContent = a / +output.textContent
+            a = temp
+            newNumON = true
+            divideCounter = 0
+        }
+    }
 }
 
 
 function plusPressed() {
     minusON = false
+    minusCounter = 0
+    multiplyON = false
+    multiplyCounter = 0
+    divideON = false
+    divideCounter = 0
+
 
     if (plusCounter === 0) {
         if (plusON === true) {
@@ -82,10 +122,13 @@ function plusPressed() {
     }
 }
 
-
-function minusPressed(e) {
+function minusPressed() {
     plusON = false
     plusCounter = 0
+    multiplyON = false
+    multiplyCounter = 0
+    divideON = false
+    divideCounter = 0
 
     if (minusCounter === 0) {
         if (minusON === true) {
@@ -101,6 +144,56 @@ function minusPressed(e) {
         }
     }
 }
+
+function multiplyPressed() {
+    minusON = false
+    minusCounter = 0
+    plusON = false
+    plusCounter = 0
+    divideON = false
+    divideCounter = 0
+
+    if (multiplyCounter === 0) {
+        if (multiplyON === true) {
+            // if (temp != a) 
+            // displayAnswer()
+            a = +output.textContent
+            multiplyCounter++
+        } else {
+            a = +output.textContent
+            multiplyON = true
+            newNumON = true
+            multiplyCounter++
+
+        }
+    }
+}
+
+function dividePressed(e) {
+    plusON = false
+    plusCounter = 0
+    multiplyON = false
+    multiplyCounter = 0
+    minusON = false
+    minusCounter = 0
+
+
+    console.log(e)
+    if (divideCounter === 0) {
+        if (divideON === true) {
+            // if (temp != a) 
+            // displayAnswer()
+            a = +output.textContent
+            divideCounter++
+        } else {
+            a = +output.textContent
+            divideON = true
+            newNumON = true
+            divideCounter++
+        }
+    }
+}
+
 
 function displayNumber(e) {
     if (newNumON === true) {
