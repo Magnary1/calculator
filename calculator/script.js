@@ -107,8 +107,8 @@ function displayAnswer() {
 }
 
 function plusPressed() {
-    if (minusON === true || divideON === true || multiplyON === true) 
-    displayAnswer()
+    if (minusON === true || divideON === true || multiplyON === true)
+        displayAnswer()
 
     minusON = false
     minusCounter = 0
@@ -134,8 +134,8 @@ function plusPressed() {
 }
 
 function minusPressed() {
-    if (plusON === true || divideON === true || multiplyON === true) 
-    displayAnswer()
+    if (plusON === true || divideON === true || multiplyON === true)
+        displayAnswer()
 
     plusON = false
     plusCounter = 0
@@ -159,7 +159,7 @@ function minusPressed() {
 }
 
 function multiplyPressed() {
-    if (plusON === true || divideON === true || minusON === true) 
+    if (plusON === true || divideON === true || minusON === true)
         displayAnswer()
     minusON = false
     minusCounter = 0
@@ -184,7 +184,7 @@ function multiplyPressed() {
 }
 
 function dividePressed() {
-    if (plusON === true || multiplyON === true || minusON === true) 
+    if (plusON === true || multiplyON === true || minusON === true)
         displayAnswer()
     plusON = false
     plusCounter = 0
@@ -212,14 +212,14 @@ function displayNumber(e) {
         clearBtn.textContent = `C`
         output.textContent = ``
         newNumON = false
-        
+
         plusCounter = 0
         minusCounter = 0
         multiplyCounter = 0
         divideCounter = 0
     }
     clearBtn.textContent = `C`
-    if (output.textContent.includes(`.`))
+    // if (output.textContent.includes(`.`))
     output.textContent += e.target.textContent
 }
 
@@ -256,4 +256,45 @@ function posNegPressed() {
 
 function percentPressed() {
     output.textContent = output.textContent / 100
+}
+
+
+// letting user type numbers/operators
+
+window.addEventListener(`keydown`, getNumber)
+
+function getNumber(e) {
+    console.log(e.key)
+    let numbers = `1234567890.`
+    if (numbers.includes(e.key))
+        displayNumberTyped(e)
+    if (e.keyCode === 13 || e.key === `=`)
+        displayAnswer()
+    if (e.key === `+`)
+        plusPressed()
+    if (e.key === `-`)
+        minusPressed()
+    if (e.key === `/`)
+        dividePressed()
+    if (e.key === `*`)
+        multiplyPressed()
+    if (e.key === `c` || e.key === `C`)
+        clearDisplay()
+    if (e.key === `Backspace`) {
+        output.textContent = output.textContent.slice(0,-1)
+    }
+}
+function displayNumberTyped(e) {
+    if (newNumON === true) {
+        clearBtn.textContent = `C`
+        output.textContent = ``
+        newNumON = false
+
+        plusCounter = 0
+        minusCounter = 0
+        multiplyCounter = 0
+        divideCounter = 0
+    }
+    clearBtn.textContent = `C`
+    output.textContent += e.key
 }
