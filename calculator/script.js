@@ -117,7 +117,7 @@ function plusPressed() {
     if (plusCounter === 0) {
         if (plusON === true) {
             // if (temp != a) 
-            // displayAnswer()
+            displayAnswer()
             a = +output.textContent
             plusCounter++
         } else {
@@ -141,7 +141,7 @@ function minusPressed() {
     if (minusCounter === 0) {
         if (minusON === true) {
             // if (temp != a) 
-            // displayAnswer()
+            displayAnswer()
             a = +output.textContent
             minusCounter++
         } else {
@@ -164,7 +164,7 @@ function multiplyPressed() {
     if (multiplyCounter === 0) {
         if (multiplyON === true) {
             // if (temp != a) 
-            // displayAnswer()
+            displayAnswer()
             a = +output.textContent
             multiplyCounter++
         } else {
@@ -190,7 +190,7 @@ function dividePressed(e) {
     if (divideCounter === 0) {
         if (divideON === true) {
             // if (temp != a) 
-            // displayAnswer()
+            displayAnswer()
             a = +output.textContent
             divideCounter++
         } else {
@@ -205,10 +205,14 @@ function dividePressed(e) {
 
 function displayNumber(e) {
     if (newNumON === true) {
-    clearBtn.textContent = `C`
-
+        clearBtn.textContent = `C`
         output.textContent = ``
         newNumON = false
+        
+        plusCounter = 0
+        minusCounter = 0
+        multiplyCounter = 0
+        divideCounter = 0
     }
     clearBtn.textContent = `C`
 
