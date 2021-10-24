@@ -4,46 +4,72 @@ const output = document.querySelector(`output`);
 const numbersBtns = document.querySelectorAll(`.numbers`)
 const equalsBtn = document.querySelector(`#equals-btn`)
 const addBtn = document.querySelector(`#add-btn`)
-
+const minusBtn = document.querySelector(`#minus-btn`)
 
 // onclick event listeners
 
 numbersBtns.forEach(number => number.addEventListener(`click`, displayNumber))
 equalsBtn.addEventListener(`click`, displayAnswer)
-addBtn.addEventListener(`click`, operatorPressed)
+addBtn.addEventListener(`click`, plusPressed)
+minusBtn.addEventListener(`click`, minusPressed)
 
 let a = undefined
-let plusON = false
-let newNumON = false
 let temp = ``
-let tempSum = ``
+
+let newNumON = false
+
+let plusON = false
 let plusCounter = 0
+
+let minusON = false
+let minusCounter = 0
+
+
+
+
+
+
 function displayAnswer() {
 
     if (plusON === true) {
         if (a === temp) {
             output.textContent = +output.textContent + a
-            console.log(`ONE ${a} is a and ${temp} is temp`)
             newNumON = true
             plusCounter = 0
-
         } else if (a != temp) {
             temp = +output.textContent
             output.textContent = +output.textContent + a
             a = temp
             newNumON = true
-            console.log(`TWO ${a} is a and ${temp} is temp`)
             plusCounter = 0
+        }
+    }
+
+
+    if (minusON === true) {
+        if (a === temp) {
+            output.textContent = +output.textContent - a
+            newNumON = true
+            minusCounter = 0
+
+        } else if (a != temp) {
+            temp = +output.textContent
+            output.textContent = a - +output.textContent
+            a = temp
+            newNumON = true
+            minusCounter = 0
         }
     }
 }
 
 
-function operatorPressed() {
+function plusPressed() {
+    minusON = false
 
     if (plusCounter === 0) {
         if (plusON === true) {
-            displayAnswer()
+            // if (temp != a) 
+            // displayAnswer()
             a = +output.textContent
             plusCounter++
         } else {
@@ -57,11 +83,24 @@ function operatorPressed() {
 }
 
 
+function minusPressed(e) {
+    plusON = false
+    plusCounter = 0
 
-
-
-
-
+    if (minusCounter === 0) {
+        if (minusON === true) {
+            // if (temp != a) 
+            // displayAnswer()
+            a = +output.textContent
+            minusCounter++
+        } else {
+            a = +output.textContent
+            minusON = true
+            newNumON = true
+            minusCounter++
+        }
+    }
+}
 
 function displayNumber(e) {
     if (newNumON === true) {
@@ -69,24 +108,6 @@ function displayNumber(e) {
         newNumON = false
     }
     output.textContent += e.target.textContent
-}
-
-function add(...nums) {
-    return nums.reduce((previous, current) => previous + current)
-}
-
-
-function subtract(...nums) {
-    return nums.reduce((previous, current) => previous - current)
-
-}
-function multiply(...nums) {
-    return nums.reduce((previous, current) => previous * current)
-
-}
-function divide(...nums) {
-    return nums.reduce((previous, current) => previous / current)
-
 }
 
 
