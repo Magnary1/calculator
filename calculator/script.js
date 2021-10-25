@@ -113,6 +113,7 @@ function plusPressed() {
             displayAnswer()
             equalsON = false
         }
+    
 
     equalsON = false
 
