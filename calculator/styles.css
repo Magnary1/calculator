@@ -7,7 +7,7 @@ body {
 header {
     font: bold;
     font-size: 42px;
-    margin: 24px;
+    margin: 60px;
 }
 #calculator {
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.1);
@@ -19,11 +19,12 @@ header {
 }
 
 output {
-    width: 250px;
-    height: 50px;
+    width: 330px;
+    height: 70px;
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.1);
     background-color: lightblue;
     border-radius: 2%;
+    font-size: 32px;
 }
 .row {
     display: flex;
@@ -35,11 +36,38 @@ output {
 }
 
 button {
-    width: 60px;
-    height: 50px;
+    width: 80px;
+    height: 70px;
     gap: 2px;
+    font-size: 24px;
+    border: 1px solid green;
+    border-radius: 20%;
+    background-color: rgb(217, 230, 247);
 }
 
 #zero-btn {
-    width: 124px;
+    width: 164px;
 }
+
+.numbers {
+    background-color:rgb(98, 163, 247);
+    color: white;
+}
+
+.right-btns {
+    background-color: rgb(176, 211, 255);
+}
+
+button:hover {
+   background: whitesmoke;
+   color: black;
+}
+
+button:active {
+    opacity: .7;
+}
+
+/* 
+button:hover {
+    opacity: .7;
+ } */
