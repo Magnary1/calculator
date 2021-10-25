@@ -45,11 +45,12 @@ let divideON = false
 let divideCounter = 0
 
 let clearCounter = 0
+let equalsON = false
 
 //functions
 
 function displayAnswer() {
-
+    equalsON = true
     if (plusON === true) {
         if (a === temp) {
             output.textContent = +output.textContent + a
@@ -107,8 +108,13 @@ function displayAnswer() {
 }
 
 function plusPressed() {
-    if (minusON === true || divideON === true || multiplyON === true)
-        displayAnswer()
+    if (divideON === true || multiplyON === true || minusON === true)
+        if (equalsON === false) {
+            displayAnswer()
+            equalsON = false
+        }
+
+    equalsON = false
 
     minusON = false
     minusCounter = 0
@@ -134,8 +140,13 @@ function plusPressed() {
 }
 
 function minusPressed() {
-    if (plusON === true || divideON === true || multiplyON === true)
-        displayAnswer()
+    if (plusON === true || multiplyON === true || minusON === true)
+        if (equalsON === false) {
+            displayAnswer()
+            equalsON = false
+        }
+
+    equalsON = false
 
     plusON = false
     plusCounter = 0
@@ -159,8 +170,14 @@ function minusPressed() {
 }
 
 function multiplyPressed() {
-    if (plusON === true || divideON === true || minusON === true)
-        displayAnswer()
+    if (plusON === true || multiplyON === true || minusON === true)
+        if (equalsON === false) {
+            displayAnswer()
+            equalsON = false
+        }
+
+    equalsON = false
+
     minusON = false
     minusCounter = 0
     plusON = false
@@ -185,7 +202,12 @@ function multiplyPressed() {
 
 function dividePressed() {
     if (plusON === true || multiplyON === true || minusON === true)
-        displayAnswer()
+        if (equalsON === false) {
+            displayAnswer()
+            equalsON = false
+        }
+    equalsON = false
+
     plusON = false
     plusCounter = 0
     multiplyON = false
@@ -285,9 +307,8 @@ function getNumber(e) {
         multiplyPressed()
     if (e.key === `c` || e.key === `C`)
         clearDisplay()
-    if (e.key === `Backspace`) {
+    if (e.key === `Backspace`)
         output.textContent = output.textContent.slice(0,-1)
-    }
 }
 function displayNumberTyped(e) {
     if (newNumON === true) {
@@ -302,4 +323,4 @@ function displayNumberTyped(e) {
     }
     clearBtn.textContent = `C`
     output.textContent += e.key
-}
+    }
