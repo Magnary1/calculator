@@ -218,6 +218,7 @@ function displayNumber(e) {
         multiplyCounter = 0
         divideCounter = 0
     }
+    if (output.textContent.includes(`.`) && this.textContent === `.`) return
     clearBtn.textContent = `C`
     // if (output.textContent.includes(`.`))
     output.textContent += e.target.textContent
@@ -266,9 +267,13 @@ window.addEventListener(`keydown`, getNumber)
 function getNumber(e) {
     console.log(e.key)
     let numbers = `1234567890.`
-    if (numbers.includes(e.key))
+    if (numbers.includes(e.key) && !output.textContent.includes(`.`)) {
         displayNumberTyped(e)
-    if (e.keyCode === 13 || e.key === `=`)
+} else if (output.textContent.includes(`.`) && numbers.slice(0,-1).includes(e.key)) {
+    displayNumberTyped(e)
+
+}
+    if (e.key === `Enter` || e.key === `=`)
         displayAnswer()
     if (e.key === `+`)
         plusPressed()
