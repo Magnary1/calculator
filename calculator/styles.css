@@ -20,11 +20,12 @@ header {
 
 output {
     width: 330px;
-    height: 70px;
+    min-height: 70px;
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.1);
     background-color: lightblue;
     border-radius: 2%;
     font-size: 32px;
+    overflow-wrap: anywhere;
 }
 .row {
     display: flex;
