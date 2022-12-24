@@ -1,4 +1,5 @@
 // linking to html
+// adding change for aws amplify
 
 const output = document.querySelector(`output`);
 const equalsBtn = document.querySelector(`#equals-btn`)
